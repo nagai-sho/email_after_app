@@ -37,9 +37,23 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
+
+  # 追加
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',               # SMTPサーバーのアドレス
+    port: 587,                               # 使用するポート番号
+    domain: 'gmail.com',                     # ドメイン名
+    user_name: 'b.a.management62@gmail.com', # Gmailアカウントのユーザー名
+    password: ENV['GMAIL_PASSWORD'],         # 環境変数から取得するGmailアカウントのパスワード
+    authentication: 'plain',                 # 認証方式
+    enable_starttls_auto: true               # STARTTLSを有効にする
+  }
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

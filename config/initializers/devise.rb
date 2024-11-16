@@ -143,7 +143,14 @@ Devise.setup do |config|
   # without confirming their account.
   # Default is 0.days, meaning the user cannot access the website without
   # confirming their account.
-  # config.allow_unconfirmed_access_for = 2.days
+
+
+  # コメントアウトの解除
+  # 未確認のユーザーがログインできる期間を設定する。
+  # 0.daysは、メール確認前のログインを完全に禁止
+  config.allow_unconfirmed_access_for = 2.days
+  # config.allow_unconfirmed_access_for = 0.days
+
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
