@@ -1,0 +1,11 @@
+<div>入力フォーム</div>
+<%= form_with model: @email, local: true do |f| %>
+  <%= f.label :content, '文字列' %><br>
+  <%= f.text_field :content, placeholder: '入力してください' %>
+  <%= f.submit 'SEND' %><br>
+<% end %>
+<div><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %></div>
+
+<% @emails.each do |email| %>
+  <%= email.content %><br>
+<% end %>
